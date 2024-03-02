@@ -230,7 +230,7 @@ void DrawMemory(App *app){
             swprintf(app->buffer,BUFFER_SIZE,L"$%.2X,Y",READ_8_BITS(app->cpu,index + 1));
         }
         else if(app->cpu->instruction_table[opcode].address == REL){
-            swprintf(app->buffer,BUFFER_SIZE,L"$%.4X",(index + 2) + ((int8_t)READ_8_BITS(app->cpu,index + 1)));
+            swprintf(app->buffer,BUFFER_SIZE,L"$%.4X",(uint16_t)((index + 2) + (int8_t)READ_8_BITS(app->cpu,index + 1)));
         }
         else if(app->cpu->instruction_table[opcode].address == IND){
             swprintf(app->buffer,BUFFER_SIZE,L"($%.4X)",READ_16_BITS(app->cpu,index + 1));
